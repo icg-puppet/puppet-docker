@@ -21,7 +21,9 @@ ExecStart=/usr/bin/<%= @docker_command %> run \
         --name <%= @sanitised_title %> \
 <%- if @log_driver %>        --log-driver=<%= @log_driver %> \
 <% end -%>
-<%- if @log_driver_opts %>        --log-opt <%= @log_driver_opts %> \
+<%- if @log_driver != 'none' %>
+  <%- if @log_driver_opts %>        --log-opt <%= @log_driver_opts %> \
+  <% end -%>
 <% end -%>
 <%- if @container_hostname %>        --hostname=<%= @container_hostname %> \
 <% end -%>
